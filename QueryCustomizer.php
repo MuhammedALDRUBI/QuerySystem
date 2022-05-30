@@ -41,6 +41,11 @@ class QueryCustomizer{
     //@conditionsArray : is an indexed array that contains deletion conditions
     // it is nullable array BUT if it there no deletion's conditions ALL rows will be deleted
     //Ex : $conditionsArray = array("Id = 4");
+    //
+    //@option array : it contains : 
+    //1- "limit" : is a numeric value key ... it mean how many rows will be deleted .. default value null
+    //Ex $options = array(  "limit" => 2)
+    //
     ///////////////////////////////////
     public function deleteQueryCustomizer( string $table , Array $conditionsArray = array()  , $options = array()  ) : string
     { 
@@ -63,6 +68,10 @@ class QueryCustomizer{
     //@conditionsArray : is an indexed array that contains updating conditions
     // it is nullable array BUT if it there no updating's conditions ALL rows will be updated
     //Ex : $conditionsArray = array("Id = 4");
+    //
+    //@option array : it contains : 
+    //1- "limit" : is a numeric value key ... it mean how many rows will be updated .. default value null
+    //Ex $options = array(  "limit" => 2)
     ///////////////////////////////////
     public function updateQueryCustomizer( string $table , Array $ColumnsValuesArray , Array $conditionsArray = array() , $options = array() ) : string
     {  
@@ -88,6 +97,11 @@ class QueryCustomizer{
     //@conditionsArray : is an indexed array that contains selection conditions
     // it is nullable array BUT if it there no selection's conditions ALL rows will be selected
     //Ex : $conditionsArray = array("Id = 4");
+    //
+    //@option array : it contains : 
+    // 1- "limit" : is a numeric value key ... it mean how many rows will be selected .. default value is null
+    //2- "offset" : is a numeric value key ... it mean From what record do you start counting?  .. default value is null
+    //Ex $options = array("limit" => 2 , "offset" => 0)
     ///////////////////////////////////
     public function selectQueryCustomizer( string $table , Array $columnsArray = array(), Array $conditionsArray = array() ,  $options = array() )  : string
     { 
@@ -122,7 +136,12 @@ class QueryCustomizer{
     //EX : $JoinConditions = array("users.id = posts.UserId" , "posts.id = comment.PostId"); (don't write and , or in connditions ... it is by "and" by default)
     //
     //@whereConditions : is an indexed array that contains where conditions that will be applied after join operation is done
-    //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'");
+    //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'"); 
+    //
+    //@option array : it contains : 
+    // 1- "limit" : is a numeric value key ... it mean how many rows will be selected .. default value is null
+    //2- "offset" : is a numeric value key ... it mean From what record do you start counting?  .. default value is null
+    //Ex $options = array("limit" => 2 , "offset" => 0)
     ///////////////////////////////////
     public function innerJoinQueryCustomizer( Array $tableAndColumnsOfEachTableAssocArray , Array $JoinConditions , Array $whereConditions = array() , $options = array() ) : string
     {  
@@ -164,7 +183,12 @@ class QueryCustomizer{
     //Ex : $table_joinConsitions = array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ); (don't write and , or in connditions ... it is by "and" by default)
     //
     //@whereConditions : is an indexed array that contains where conditions that will be applied after join operation is done
-    //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'");
+    //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'"); 
+    //
+    //@option array : it contains : 
+    // 1- "limit" : is a numeric value key ... it mean how many rows will be selected .. default value is null
+    //2- "offset" : is a numeric value key ... it mean From what record do you start counting?  .. default value is null
+    //Ex $options = array("limit" => 2 , "offset" => 0)
     ///////////////////////////////////
     public function complexJoinQueryCustomizer( Array $tableAndColumnsOfEachTableAssocArray , string $LeftTableName ,  Array $RightTableName_joinType_Array , Array $table_joinConsitions , Array $whereConditions = array() ,  $options = array() ) : string
     {   
@@ -194,7 +218,7 @@ class QueryCustomizer{
     ///////////////////////////////////
     //this method will handle a union sql statment ... it just need :
     //@ArrayOfSelectionQueries : is an indexed array that contains all selection statements these will be integrated in a one table
-    //EX : $ArrayOfSelectionQueries = array("select email from users" , select email from customers");
+    //EX : $ArrayOfSelectionQueries = array("select email from users" , "select email from customers");
     //
     //if @unionAll is false the values will be unique (No redundancy there in value)
     ///////////////////////////////////
