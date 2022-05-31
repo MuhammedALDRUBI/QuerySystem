@@ -221,7 +221,7 @@ class QuerySystem{
     }
 
     //==============================================================================
-    //update Methodes
+    //updating Methodes
     //==============================================================================
     
 
@@ -267,7 +267,8 @@ class QuerySystem{
     //@statement is a sql update statement 
     //Note : don't forget to open connection before use this method 
     ///////////////////////////////////
-    static public function updateBySqlStatement($statement){
+    static public function updateBySqlStatement($statement)
+    {
         try{
             if(self::$connectionObject == null){
                 throw new Exception("You must open the connection with database first !");
@@ -391,7 +392,7 @@ class QuerySystem{
     //@statement is a sql select statement  (( for one row))
     //Note : don't forget to open connection before use this method 
     ///////////////////////////////////
-    static public function getRowBySqlStatement($statement )
+    static public function getRowBySqlStatement($statement)
     {
         try{
             if(self::$connectionObject == null){
@@ -544,6 +545,7 @@ class QuerySystem{
     //3- "offset" : is a numeric value key ... it mean From what record do you start counting?  .. default value is null
     //Ex $options = array("NoExecution_retuurnSQLString" => false , "limit" => 2 , "offset" => 0)
     //
+    //Note : don't forget to open connection before use this method 
     ///////////////////////////////////
     static public function JoinByValues( Array $tableAndColumnsOfEachTableAssocArray , string $LeftTableName , Array $RightTableName_joinType_Array , Array $table_joinConsitions , Array $whereConditions = array() ,  $options = array())
     {
@@ -569,11 +571,19 @@ class QuerySystem{
     //EX : $ArrayOfSelectionQueries = array("select email from users" , "select email from customers");
     //
     //you can use previous methodes to return a sql statements
-    //Ex : $arrayOfSelections = array(
-    //           QuerySystem::JoinByValues( array("users" => array("Username") , "posts" => array("title" , "content") , "comments" => array("comment"))  , "users" , array("posts" => "left" , "comments" => "left") , array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ) , array("users.id > 12")  ,  array("NoExecution_retuurnSQLString" => true) ) , 
-    //           QuerySystem::JoinByValues( array("users" => array("Username") , "posts" => array("title" , "content") , "comments" => array("comment"))  , "users" , array("posts" => "right" , "comments" => "right") , array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ) , array("users.id > 12")  ,  array("NoExecution_retuurnSQLString" => true) ) , 
-    //      );
-    //      QuerySystem::unionByValues( $arrayOfSelections)
+    //     Ex : $arrayOfSelections = array(
+    //               QuerySystem::JoinByValues(
+    //               array("users" => array("Username") , "posts" => array("title" , "content") , "comments" => array("comment"))  ,
+    //              "users" , array("posts" => "left" , "comments" => "left") ,
+    //               array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ) ,
+    //                array("users.id > 12")  ,  array("NoExecution_retuurnSQLString" => true) ) , 
+            
+    //               QuerySystem::JoinByValues( array("users" => array("Username") , "posts" => array("title" , "content") , "comments" => array("comment"))  , 
+    //               "users" , array("posts" => "right" , "comments" => "right") , 
+    //                array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ) ,
+    //                array("users.id > 12")  ,  array("NoExecution_retuurnSQLString" => true) ) , 
+    //          );
+    //    QuerySystem::unionByValues( $arrayOfSelections)
     //
     //
     //if @unionAll is false the values will be unique (No redundancy there in value)
