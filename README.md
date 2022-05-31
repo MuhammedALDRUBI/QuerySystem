@@ -11,15 +11,36 @@ QuerySystem is the Last Version Of QueryHandler.php - By PHP
 #### 1 - openConnection($Host , $DBName , $DBUserName , $DBUserPassword) 
     this function is used to open the connection with ((Any Database)) 
     Dont't forget to close connection before connection to an other database
+    $Host : Host name (string value)
+    $DBName : Database name (string value)
+    $DBUserName : username that you will use it to control Database in MySql System
+    $DBUserPassword : must be compatible with username
     
 #### 2 - closeConnection()
+     this method is used to close the connection
+     
 #### 3 - custumizeQuery()
-
+    this function used to return a QueryCustomizer object .... it can help you to customize a query string
+    but it isn't recommonded to use it ..... use this library's methodes (QuerySystem Methodes) instead.
 <hr>
 
 ### insertion Methodes
 ####  4 - insertByValuesArray($table ,   $ColumnsAndValuesArray , $options = array())
+    with this method you can insert row and return boolean value where :
+    @table : is table name
+    @ColumnsAndValuesArray : is an associative array of values that you want to insert 
+    
+    @option array : with this array you can specify the execution mode ... it contains :
+    "NoExecution_retuurnSQLString"  : is a logical valued key  if it is true the query will be executed ...
+    if it is false the method will return a sql statment without any execution default value is false (if you don't change it , query will be executed)
+    Ex $options = array("NoExecution_retuurnSQLString" => false)
+    
+    Note : don't forget to open connection before use this method 
+    
 ####  5 - insertBySqlStatement($statement)
+    with this method you can insert a new row and return boolean value , where :
+    @statement is a sql insert statement 
+    Note : don't forget to open connection before use this method
 
 <hr>
 
