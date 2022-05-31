@@ -133,7 +133,8 @@ class QueryCustomizer{
     //EX : $tableAndColumnsOfEachTableAssocArray = array("users" => array("FirstName" , "LastName") , "posts" => array("title" , "content"))
     //
     //@JoinConditions : is an indexde array that contains all join conditions .... it must not be null
-    //EX : $JoinConditions = array("users.id = posts.UserId" , "posts.id = comment.PostId"); (don't write and , or in connditions ... it is by "and" by default)
+    //EX : $JoinConditions = array("users.id = posts.UserId" , "posts.id = comment.PostId"); 
+    //(don't write and , or in connditions ... it is by "and" by default)
     //
     //@whereConditions : is an indexed array that contains where conditions that will be applied after join operation is done
     //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'"); 
@@ -180,7 +181,8 @@ class QueryCustomizer{
     //
     //@table_joinConsitions : is an Associative array that contains all tables these will be joined with leftTable .... it must not be null
     // each table is key , and each key 's value must be join condition
-    //Ex : $table_joinConsitions = array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ); (don't write and , or in connditions ... it is by "and" by default)
+    //Ex : $table_joinConsitions = array("posts" => "users.id = posts.UserId" , "comments" => "posts.id = comments.PostId" ); 
+    //(don't write and , or in connditions ... it is by "and" by default)
     //
     //@whereConditions : is an indexed array that contains where conditions that will be applied after join operation is done
     //Ex : $whereConditions = array("users.city = 'Istanbul'" , "posts.created_at > '2011-11-13'"); 
