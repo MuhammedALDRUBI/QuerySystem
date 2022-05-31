@@ -4,6 +4,7 @@ QuerySystem is the Last Version Of QueryHandler.php - By PHP
 <hr>
 
 ## this Library will help you to connect MySQL and execute a lot of operations in specified database
+## All Methodes are static .... so you don't need to create an object from QuerySystem class
 <hr> 
 
 ## Usable Static Methodes:
