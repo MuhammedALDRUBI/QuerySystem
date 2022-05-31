@@ -276,3 +276,9 @@ QuerySystem is the Last Version Of QueryHandler.php - By PHP
     @dbName : database name
     @table : table name
     @column : column or field name
+
+
+# Don't forget to support us on : 
+##  Facebook : https://www.facebook.com/MDRDevelopment/
+##  Instagram : https://www.instagram.com/mdr_development_tr/
+##  GitHub : https://github.com/MuhammedALDRUBI
