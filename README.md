@@ -8,7 +8,10 @@ QuerySystem is the Last Version Of QueryHandler.php - By PHP
 
 ## Usable Static Methodes:
 
-#### 1 - openConnection($Host , $DBName , $DBUserName , $DBUserPassword)
+#### 1 - openConnection($Host , $DBName , $DBUserName , $DBUserPassword) 
+    this function is used to open the connection with ((Any Database)) 
+    Dont't forget to close connection before connection to an other database
+    
 #### 2 - closeConnection()
 #### 3 - custumizeQuery()
 
